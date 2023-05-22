@@ -1,5 +1,7 @@
 
-t = input()
+number = input()
+elements = input().split()
+
 all = list(map(int, input().split()))
 
 set_all = set(all)
