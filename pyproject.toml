@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "test"
+version = "0.1.0"
+description = ""
+authors = ["luk <lalaluk5@ntub.edu.tw>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+beautifulsoup4 = "^4.12.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
