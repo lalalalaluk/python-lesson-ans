@@ -1,43 +1,29 @@
-import math
+import re
 
-# 基礎類別
-class Shape:
-    def __init__(self, name):
-        self.name = name
+def create_password(pwd):
+  try:  
+    must_number_pattern = '\d'
+    must_upper_pattern = '[A-Z]'
+    must_lower_pattern = '[a-z]'
 
-    def area(self):
-        pass
+    if len(pwd) < 8:
+      raise ValueError("密碼必須大於8位數")
+    elif len(pwd) > 16:
+      raise ValueError("密碼必須小於16位數")
+    elif not re.findall(must_number_pattern, pwd):
+        raise ValueError("密碼必須有數字")
+    elif re.findall(must_upper_pattern, pwd) == []:
+        raise ValueError("密碼必須有大寫英文字母")
+    elif re.findall(must_lower_pattern, pwd) == []:
+        raise ValueError("密碼必須有小寫英文字母")
+    elif " " in pwd:
+      raise Exception("密碼不能有空格")
+    else:
+       print('密碼設定成功')
 
-    def perimeter(self):
-        pass
-
-# 圓形類別，繼承自Shape
-class Circle(Shape):
-    def __init__(self, radius):
-        super().__init__("Circle")
-        self.radius = radius
-
-    def area(self):
-        return math.pi * self.radius ** 2
-
-    def perimeter(self):
-        return 2 * math.pi * self.radius
-
-# 長方形類別，繼承自Shape
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        super().__init__("Rectangle")
-        self.width = width
-        self.height = height
-
-    def area(self):
-        return self.width * self.height
-
-    def perimeter(self):
-        return 2 * (self.width + self.height)
-
-circle = Circle(10)
-print(f"A {circle.name} with radius {circle.radius} has area {circle.area()} and perimeter {circle.perimeter()}.")
-
-rectangle = Rectangle(10, 20)
-print(f"A {rectangle.name} with width {rectangle.width} and height {rectangle.height} has area {rectangle.area()} and perimeter {rectangle.perimeter()}.")
+  except ValueError as err:
+    print(str(err))
+  except Exception as e:
+    print(str(e))
+  
+create_password("dAddddddd3")
