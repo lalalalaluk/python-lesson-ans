@@ -73,15 +73,26 @@ def check_identity(identity):
     else:
         return False
 
+file = open('test_identity.txt', 'r', encoding='utf-8')
+file2 = open('result.txt', 'a', encoding='utf-8')
 
-with open('test_identity.txt', 'r', encoding='utf-8') as file:
-    lines = file.readlines()
+lines = file.readlines()
 
-    with open('result.txt', 'a', encoding='utf-8') as file:
-        for line in lines:
-            if check_identity(line.strip()):
-                print(line.strip(), '合法')
-                file.write(line.strip() + ' 合法\n')
-            else:
-                print(line.strip(), '不合法')
-                file.write(line.strip() + ' 不合法\n')
+for line in lines:
+    print(line.strip(), check_identity(line.strip()))
+    file2.write(line.strip() + ' ' + str(check_identity(line.strip())) + '\n')
+
+file.close()
+
+
+# with open('test_identity.txt', 'r', encoding='utf-8') as file:
+#     lines = file.readlines()
+
+#     with open('result.txt', 'a', encoding='utf-8') as file:
+#         for line in lines:
+#             if check_identity(line.strip()):
+#                 print(line.strip(), '合法')
+#                 file.write(line.strip() + ' 合法\n')
+#             else:
+#                 print(line.strip(), '不合法')
+#                 file.write(line.strip() + ' 不合法\n')

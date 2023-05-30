@@ -53,5 +53,6 @@ print(result)
 
 with open("result.csv", "w", newline="", encoding='utf-8') as csvfile:
   writer = csv.writer(csvfile)
+  writer.writerow(['身分證','學號',  '姓名', '科系', '性別', '居住地'])
   for r in result:
     writer.writerow(r)
