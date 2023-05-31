@@ -44,12 +44,14 @@ index = 0
 with open("./讀取練習utf8.csv", 'r', encoding='utf-8') as file:
   csvreader = csv.reader(file)
   for row in csvreader:
-    if row[1][3:5]:
-        sex = '男' if row[0][1] == '1' else '女'
-        result.append([row[0] , row[1] , row[2][0] + 'O' + row[2][1] , dep[row[1][3:5]], sex , city[row[0][0]]])
+    if index == 0:
+      index += 1
+      continue
+    
+    sex = '男' if row[0][1] == '1' else '女'
+    result.append([row[0] , row[1] , row[2][0] + 'O' + row[2][1] , dep[row[1][3:5]], sex , city[row[0][0]]])
     index += 1
 
-print(result)
 
 with open("result.csv", "w", newline="", encoding='utf-8') as csvfile:
   writer = csv.writer(csvfile)
